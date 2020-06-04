@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_import_root"
+            parent="connector.menu_connector_root"
+            name="Launch Import"
+            sequence="30"
+            groups="connector.group_connector_manager"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_minimal_backend_form" model="ir.ui.view">
+          <field name="name">minimal.backend.form</field>
+          <field name="model">minimal.backend</field>
+          <field name="arch" type="xml">
+            <form string="Import Backend">
+              <header>
+              </header>
+              <sheet>
+                <h1>
+                  <field name="database" placeholder="database" />
+                </h1>
+                <group>
+                    <group>
+                        <field name="hostname" />
+                        <field name="username" />
+                        <field name="password" />
+                    </group>
+                </group>
+
+<!--                <field name="checkpoints">-->
+<!--                  <tree colors="green:state=='reviewed';red:state=='need_review'">-->
+<!--                    <field name="name" />-->
+<!--                    <field name="state" />-->
+<!--                  </tree>-->
+<!--                </field>-->
+              </sheet>
+            </form>
+          </field>
+        </record>
+
+        <record id="view_data_import_backend_tree" model="ir.ui.view">
+          <field name="name">minimal.backend.tree</field>
+          <field name="model">minimal.backend</field>
+          <field name="arch" type="xml">
+            <tree string="Import Backend" delete="false">
+              <field name="database"/>
+            </tree>
+          </field>
+        </record>
+
+        <record id="action_minimal_backend" model="ir.actions.act_window">
+          <field name="name">Import Backends</field>
+          <field name="res_model">minimal.backend</field>
+          <field name="view_type">form</field>
+          <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_data_import_backend"
+            name="Odoo Backend"
+            parent="menu_import_root"
+            action="action_minimal_backend"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_minimal_backend,access_minimal_backend,model_minimal_backend,base.group_user,1,1,1,1
+access_launch_import,access_launch_import,model_launch_import,base.group_user,1,1,1,1
+access_minimal_res_partner,access_minimal_res_partner,model_minimal_res_partner,base.group_user,1,1,1,1
