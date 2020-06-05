@@ -40,27 +40,11 @@ class LaunchImport(models.Model):
         else:
             self.message = ''
 
-    @api.model
-    def import_batch(self, backend, model, filters=None):
-        """ Prepare the import of multiple records from external table"""
-        filters = filters or {}
-        with backend.work_on(model) as work:
-            importer = work.component(usage='batch.importer')
-            return importer.run(filters=filters)
-
-    # @api.model
-    # def import_record(self, backend, external_id, row_data, force=False):
-    #     """ Import an order """
-    #     with backend.work_on(self._name) as work:
-    #         importer = work.component(usage='record.importer')
-    #         importer._row_data = row_data
-    #         return importer.run(external_id, force=force)
-
     @api.multi
     def action_run_import(self):
         table = self.name
         binding_model = self.name
-        messages = self.import_batch(self.backend_id, binding_model)
+        messages = self.backend_id.import_batch(binding_model)
         if messages:
             message = '\n<br/>'.join(messages)
         else:

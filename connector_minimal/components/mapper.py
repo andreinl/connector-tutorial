@@ -24,13 +24,14 @@ class PartnerMapper(Component):
     ]
     _usage = 'import.mapper'
 
+    # Columns mapping
     direct = [
+        # (<external>, <internal>)
         ('name', 'name')
     ]
 
     @mapping
     def default_values(self, record):
         return {
-            'external_id': record['id'],
             'backend_id': self.backend_record.id,
         }

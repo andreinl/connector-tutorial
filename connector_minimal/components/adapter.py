@@ -35,7 +35,7 @@ class GenericAdapter(AbstractComponent):
         model_model = connection.env(self._external_model)
         filters = filters or []
         # Attention! We limit records to just first 10
-        return model_model.search(filters, limit=10)
+        return model_model.search(filters, limit=30)
 
 
 # these are the components we need for our synchronization

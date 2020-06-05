@@ -17,14 +17,26 @@ class MinimalBackend(models.Model):
     password = fields.Char(string="Password", required=True)
     database = fields.Char(string="Database", required=True)
 
-    # def import_partner(self, external_id: int) -> None:
-    #     model = 'minimal.res.partner'  # name of the binding model
-    #     with self.work_on(model_name=model) as work:
-    #         importer = work.component(usage='record.importer')
-    #         # returns an instance of PartnerImporter, which has been
-    #         # found with:the collection name (minimal.backend, the model,
-    #         # and the usage).
-    #         importer.run(external_id)
+    def import_record(self, model: str, external_id: int) -> None:
+        # model: name of the binding model
+        with self.work_on(model_name=model) as work:
+            importer = work.component(usage='record.importer')
+            # returns an instance of PartnerImporter, which has been
+            # found with:the collection name (minimal.backend, the model,
+            # and the usage).
+            return importer.run(external_id)
+
+    def import_batch(self, model: str, filters: list = None) -> None:
+        """Prepare the import of multiple records from external table
+
+        model: name of the binding model
+        """
+        with self.work_on(model_name=model) as work:
+            importer = work.component(usage='batch.importer')
+            # returns an instance of PartnerImporter, which has been
+            # found with:the collection name (minimal.backend, the model,
+            # and the usage).
+            return importer.run(filters=filters)
 
     def get_connection(self):
         if not hasattr(self, 'connection'):

@@ -14,7 +14,7 @@
     'author': "Didotech srl",
     'website': "http://www.didotech.com",
     'category': 'Connector',
-    'version': '0.0.0.1',
+    'version': '0.1.2.1',
 
     # any module necessary for this one to work correctly
     'depends': [

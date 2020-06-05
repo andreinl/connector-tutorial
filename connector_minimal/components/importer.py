@@ -109,4 +109,3 @@ class PartnerBatchImporter(Component):
         # the record, we'll update the same record instead of
         # creating a new one
         binder.bind(external_id, binding)
-
